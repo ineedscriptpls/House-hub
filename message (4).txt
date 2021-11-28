@@ -1,0 +1,675 @@
+if game.PlaceId == 155615604 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Prison Life(house hub)", "Synapse")
+
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+    MainSection:NewDropdown("Give Gun", "Give you gun ofc", {"M9", "Remington 870", "AK-47"}, function(v)
+        local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
+        local Event = game:GetService("Workspace").Remote.ItemHandler
+        Event:InvokeServer(A_1)
+    end)
+
+    MainSection:NewDropdown("Gun Mod", "Makes gun op as shit", {"M9", "Remington 870", "AK-47"}, function(v)
+        local module = nil
+        if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(v) then
+            module = require(game:GetService("Players").LocalPlayer.Backpack[v].GunStates)
+        elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(v) then
+            module = require(game:GetService("Players").LocalPlayer.Character[v].GunStates)
+        end
+        if module ~= nil then
+            module["MaxAmmo"] = math.huge
+            module["CurrentAmmo"] = math.huge
+            module["StoredAmmo"] = math.huge
+            module["FireRate"] = 0.000001
+            module["Spread"] = 0
+            module["Range"] = math.huge
+            module["Bullets"] = 10
+            module["ReloadTime"] = 0.000001
+            module["AutoFire"] = true
+        end
+    end)
+
+    -- PLAYER
+    local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+
+    PlayerSection:NewSlider("Walkspeed", "Changes the walkspeed", 250, 16, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end)
+
+    PlayerSection:NewSlider("Jumppower", "Changes the jumppower", 250, 50, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+    end)
+
+    local Scripthub = Window:NewTab("Scripthub")
+    local ScripthubSection = Scripthub:NewSection("Scripthub")
+    ScripthubSection:NewButton("Aurav1", "Execute aurav1", function()
+        --[[
+IronBrew:tm: obfuscation; Version 2.7.2
+]]
+return(function(IIlIIlIllIIIlllllII,lIIIlIllIIlIlIlllllIllIl,lIIIlIllIIlIlIlllllIllIl)local IIIlIIllIlIlIIIIIIIIl=string.char;local llIIIIIlIIlIIlIII=string.sub;local lllIlIIll=table.concat;local IllIllIllllIlIII=math.ldexp;local IlIIllllll=getfenv or function()return _ENV end;local lllIIlIllIIllIIIlIllIIIll=select;local lIIllllllI=unpack or table.unpack;local lIlIIIIllIIIIlllIllllIll=tonumber;local function IlIIllIIII(IIlIllllIIl)local lIlIlIIIlllllllII,IIllIllIIlIlIIIllllIlI,IlIIIllIIlIlllll="","",{}local lIIlIIlIIIlIIIIIIllIIII=256;local lIIllllllI={}for lIIIlIllIIlIlIlllllIllIl=0,lIIlIIlIIIlIIIIIIllIIII-1 do lIIllllllI[lIIIlIllIIlIlIlllllIllIl]=IIIlIIllIlIlIIIIIIIIl(lIIIlIllIIlIlIlllllIllIl)end;local lIIIlIllIIlIlIlllllIllIl=1;local function IIlIIlIllIIIlllllII()local lIlIlIIIlllllllII=lIlIIIIllIIIIlllIllllIll(llIIIIIlIIlIIlIII(IIlIllllIIl,lIIIlIllIIlIlIlllllIllIl,lIIIlIllIIlIlIlllllIllIl),36)lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl+1;local IIllIllIIlIlIIIllllIlI=lIlIIIIllIIIIlllIllllIll(llIIIIIlIIlIIlIII(IIlIllllIIl,lIIIlIllIIlIlIlllllIllIl,lIIIlIllIIlIlIlllllIllIl+lIlIlIIIlllllllII-1),36)lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl+lIlIlIIIlllllllII;return IIllIllIIlIlIIIllllIlI end;lIlIlIIIlllllllII=IIIlIIllIlIlIIIIIIIIl(IIlIIlIllIIIlllllII())IlIIIllIIlIlllll[1]=lIlIlIIIlllllllII;while lIIIlIllIIlIlIlllllIllIl<#IIlIllllIIl do local lIIIlIllIIlIlIlllllIllIl=IIlIIlIllIIIlllllII()if lIIllllllI[lIIIlIllIIlIlIlllllIllIl]then IIllIllIIlIlIIIllllIlI=lIIllllllI[lIIIlIllIIlIlIlllllIllIl]else IIllIllIIlIlIIIllllIlI=lIlIlIIIlllllllII..llIIIIIlIIlIIlIII(lIlIlIIIlllllllII,1,1)end;lIIllllllI[lIIlIIlIIIlIIIIIIllIIII]=lIlIlIIIlllllllII..llIIIIIlIIlIIlIII(IIllIllIIlIlIIIllllIlI,1,1)IlIIIllIIlIlllll[#IlIIIllIIlIlllll+1],lIlIlIIIlllllllII,lIIlIIlIIIlIIIIIIllIIII=IIllIllIIlIlIIIllllIlI,IIllIllIIlIlIIIllllIlI,lIIlIIlIIIlIIIIIIllIIII+1 end;return table.concat(IlIIIllIIlIlllll)end;local lIlIIIIllIIIIlllIllllIll=IlIIllIIII('1G1K2751N1U2751K23C23F23923422V22O22U23H23E2371N27427523723923D2351N1J27922K22O22O22S22B23522O1N21H27923G27W22S22V21A21N21N22S23927F23523A27I21M23B23F23D21N22U23922R21N2311Y21S1X21W23022523A2792751T279161S2791L2922752961M27921G2981K2961N1K162761K27M28Z27429628Z29E29K29P29P29A29P29629O28Z29X');local lIIIlIllIIlIlIlllllIllIl=(bit or bit32);local IlIIIllIIlIlllll=lIIIlIllIIlIlIlllllIllIl and lIIIlIllIIlIlIlllllIllIl.bxor or function(lIIIlIllIIlIlIlllllIllIl,lIlIlIIIlllllllII)local IIllIllIIlIlIIIllllIlI,IlIIIllIIlIlllll,llIIIIIlIIlIIlIII=1,0,10 while lIIIlIllIIlIlIlllllIllIl>0 and lIlIlIIIlllllllII>0 do local lIIlIIlIIIlIIIIIIllIIII,llIIIIIlIIlIIlIII=lIIIlIllIIlIlIlllllIllIl%2,lIlIlIIIlllllllII%2 if lIIlIIlIIIlIIIIIIllIIII~=llIIIIIlIIlIIlIII then IlIIIllIIlIlllll=IlIIIllIIlIlllll+IIllIllIIlIlIIIllllIlI end lIIIlIllIIlIlIlllllIllIl,lIlIlIIIlllllllII,IIllIllIIlIlIIIllllIlI=(lIIIlIllIIlIlIlllllIllIl-lIIlIIlIIIlIIIIIIllIIII)/2,(lIlIlIIIlllllllII-llIIIIIlIIlIIlIII)/2,IIllIllIIlIlIIIllllIlI*2 end if lIIIlIllIIlIlIlllllIllIl<lIlIlIIIlllllllII then lIIIlIllIIlIlIlllllIllIl=lIlIlIIIlllllllII end while lIIIlIllIIlIlIlllllIllIl>0 do local lIlIlIIIlllllllII=lIIIlIllIIlIlIlllllIllIl%2 if lIlIlIIIlllllllII>0 then IlIIIllIIlIlllll=IlIIIllIIlIlllll+IIllIllIIlIlIIIllllIlI end lIIIlIllIIlIlIlllllIllIl,IIllIllIIlIlIIIllllIlI=(lIIIlIllIIlIlIlllllIllIl-lIlIlIIIlllllllII)/2,IIllIllIIlIlIIIllllIlI*2 end return IlIIIllIIlIlllll end local function IIllIllIIlIlIIIllllIlI(lIlIlIIIlllllllII,lIIIlIllIIlIlIlllllIllIl,IIllIllIIlIlIIIllllIlI)if IIllIllIIlIlIIIllllIlI then local lIIIlIllIIlIlIlllllIllIl=(lIlIlIIIlllllllII/2^(lIIIlIllIIlIlIlllllIllIl-1))%2^((IIllIllIIlIlIIIllllIlI-1)-(lIIIlIllIIlIlIlllllIllIl-1)+1);return lIIIlIllIIlIlIlllllIllIl-lIIIlIllIIlIlIlllllIllIl%1;else local lIIIlIllIIlIlIlllllIllIl=2^(lIIIlIllIIlIlIlllllIllIl-1);return(lIlIlIIIlllllllII%(lIIIlIllIIlIlIlllllIllIl+lIIIlIllIIlIlIlllllIllIl)>=lIIIlIllIIlIlIlllllIllIl)and 1 or 0;end;end;local lIIIlIllIIlIlIlllllIllIl=1;local function lIlIlIIIlllllllII()local lIlIlIIIlllllllII,llIIIIIlIIlIIlIII,IIllIllIIlIlIIIllllIlI,lIIlIIlIIIlIIIIIIllIIII=IIlIIlIllIIIlllllII(lIlIIIIllIIIIlllIllllIll,lIIIlIllIIlIlIlllllIllIl,lIIIlIllIIlIlIlllllIllIl+3);lIlIlIIIlllllllII=IlIIIllIIlIlllll(lIlIlIIIlllllllII,20)llIIIIIlIIlIIlIII=IlIIIllIIlIlllll(llIIIIIlIIlIIlIII,20)IIllIllIIlIlIIIllllIlI=IlIIIllIIlIlllll(IIllIllIIlIlIIIllllIlI,20)lIIlIIlIIIlIIIIIIllIIII=IlIIIllIIlIlllll(lIIlIIlIIIlIIIIIIllIIII,20)lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl+4;return(lIIlIIlIIIlIIIIIIllIIII*16777216)+(IIllIllIIlIlIIIllllIlI*65536)+(llIIIIIlIIlIIlIII*256)+lIlIlIIIlllllllII;end;local function IIlIllllIIl()local lIlIlIIIlllllllII=IlIIIllIIlIlllll(IIlIIlIllIIIlllllII(lIlIIIIllIIIIlllIllllIll,lIIIlIllIIlIlIlllllIllIl,lIIIlIllIIlIlIlllllIllIl),20);lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl+1;return lIlIlIIIlllllllII;end;local function lIIlIIlIIIlIIIIIIllIIII()local IIllIllIIlIlIIIllllIlI,lIlIlIIIlllllllII=IIlIIlIllIIIlllllII(lIlIIIIllIIIIlllIllllIll,lIIIlIllIIlIlIlllllIllIl,lIIIlIllIIlIlIlllllIllIl+2);IIllIllIIlIlIIIllllIlI=IlIIIllIIlIlllll(IIllIllIIlIlIIIllllIlI,20)lIlIlIIIlllllllII=IlIIIllIIlIlllll(lIlIlIIIlllllllII,20)lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl+2;return(lIlIlIIIlllllllII*256)+IIllIllIIlIlIIIllllIlI;end;local function IlIIllIIII()local IlIIIllIIlIlllll=lIlIlIIIlllllllII();local lIIIlIllIIlIlIlllllIllIl=lIlIlIIIlllllllII();local llIIIIIlIIlIIlIII=1;local IlIIIllIIlIlllll=(IIllIllIIlIlIIIllllIlI(lIIIlIllIIlIlIlllllIllIl,1,20)*(2^32))+IlIIIllIIlIlllll;local lIlIlIIIlllllllII=IIllIllIIlIlIIIllllIlI(lIIIlIllIIlIlIlllllIllIl,21,31);local lIIIlIllIIlIlIlllllIllIl=((-1)^IIllIllIIlIlIIIllllIlI(lIIIlIllIIlIlIlllllIllIl,32));if(lIlIlIIIlllllllII==0)then if(IlIIIllIIlIlllll==0)then return lIIIlIllIIlIlIlllllIllIl*0;else lIlIlIIIlllllllII=1;llIIIIIlIIlIIlIII=0;end;elseif(lIlIlIIIlllllllII==2047)then return(IlIIIllIIlIlllll==0)and(lIIIlIllIIlIlIlllllIllIl*(1/0))or(lIIIlIllIIlIlIlllllIllIl*(0/0));end;return IllIllIllllIlIII(lIIIlIllIIlIlIlllllIllIl,lIlIlIIIlllllllII-1023)*(llIIIIIlIIlIIlIII+(IlIIIllIIlIlllll/(2^52)));end;local IllIllIllllIlIII=lIlIlIIIlllllllII;local function lIllIllIIlIIllIllIlIlIll(lIlIlIIIlllllllII)local IIllIllIIlIlIIIllllIlI;if(not lIlIlIIIlllllllII)then lIlIlIIIlllllllII=IllIllIllllIlIII();if(lIlIlIIIlllllllII==0)then return'';end;end;IIllIllIIlIlIIIllllIlI=llIIIIIlIIlIIlIII(lIlIIIIllIIIIlllIllllIll,lIIIlIllIIlIlIlllllIllIl,lIIIlIllIIlIlIlllllIllIl+lIlIlIIIlllllllII-1);lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl+lIlIlIIIlllllllII;local lIlIlIIIlllllllII={}for lIIIlIllIIlIlIlllllIllIl=1,#IIllIllIIlIlIIIllllIlI do lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl]=IIIlIIllIlIlIIIIIIIIl(IlIIIllIIlIlllll(IIlIIlIllIIIlllllII(llIIIIIlIIlIIlIII(IIllIllIIlIlIIIllllIlI,lIIIlIllIIlIlIlllllIllIl,lIIIlIllIIlIlIlllllIllIl)),20))end return lllIlIIll(lIlIlIIIlllllllII);end;local lIIIlIllIIlIlIlllllIllIl=lIlIlIIIlllllllII;local function lllIlIIll(...)return{...},lllIIlIllIIllIIIlIllIIIll('#',...)end local function lIlIIIIllIIIIlllIllllIll()local IIlIIlIllIIIlllllII={};local IlIIIllIIlIlllll={};local lIIIlIllIIlIlIlllllIllIl={};local IIIlIIllIlIlIIIIIIIIl={[#{"1 + 1 = 111";"1 + 1 = 111";}]=IlIIIllIIlIlllll,[#{"1 + 1 = 111";"1 + 1 = 111";{342;419;24;283};}]=nil,[#{"1 + 1 = 111";"1 + 1 = 111";{97;33;40;221};{839;167;190;529};}]=lIIIlIllIIlIlIlllllIllIl,[#{"1 + 1 = 111";}]=IIlIIlIllIIIlllllII,};local lIIIlIllIIlIlIlllllIllIl=lIlIlIIIlllllllII()local llIIIIIlIIlIIlIII={}for IIllIllIIlIlIIIllllIlI=1,lIIIlIllIIlIlIlllllIllIl do local lIlIlIIIlllllllII=IIlIllllIIl();local lIIIlIllIIlIlIlllllIllIl;if(lIlIlIIIlllllllII==2)then lIIIlIllIIlIlIlllllIllIl=(IIlIllllIIl()~=0);elseif(lIlIlIIIlllllllII==1)then lIIIlIllIIlIlIlllllIllIl=IlIIllIIII();elseif(lIlIlIIIlllllllII==3)then lIIIlIllIIlIlIlllllIllIl=lIllIllIIlIIllIllIlIlIll();end;llIIIIIlIIlIIlIII[IIllIllIIlIlIIIllllIlI]=lIIIlIllIIlIlIlllllIllIl;end;IIIlIIllIlIlIIIIIIIIl[3]=IIlIllllIIl();for lIIIlIllIIlIlIlllllIllIl=1,lIlIlIIIlllllllII()do IlIIIllIIlIlllll[lIIIlIllIIlIlIlllllIllIl-1]=lIlIIIIllIIIIlllIllllIll();end;for lIlIIIIllIIIIlllIllllIll=1,lIlIlIIIlllllllII()do local lIIIlIllIIlIlIlllllIllIl=IIlIllllIIl();if(IIllIllIIlIlIIIllllIlI(lIIIlIllIIlIlIlllllIllIl,1,1)==0)then local IlIIIllIIlIlllll=IIllIllIIlIlIIIllllIlI(lIIIlIllIIlIlIlllllIllIl,2,3);local lIIllllllI=IIllIllIIlIlIIIllllIlI(lIIIlIllIIlIlIlllllIllIl,4,6);local lIIIlIllIIlIlIlllllIllIl={lIIlIIlIIIlIIIIIIllIIII(),lIIlIIlIIIlIIIIIIllIIII(),nil,nil};if(IlIIIllIIlIlllll==0)then lIIIlIllIIlIlIlllllIllIl[#("Aul")]=lIIlIIlIIIlIIIIIIllIIII();lIIIlIllIIlIlIlllllIllIl[#("vD2f")]=lIIlIIlIIIlIIIIIIllIIII();elseif(IlIIIllIIlIlllll==1)then lIIIlIllIIlIlIlllllIllIl[#("ciC")]=lIlIlIIIlllllllII();elseif(IlIIIllIIlIlllll==2)then lIIIlIllIIlIlIlllllIllIl[#("PFq")]=lIlIlIIIlllllllII()-(2^16)elseif(IlIIIllIIlIlllll==3)then lIIIlIllIIlIlIlllllIllIl[#("TSD")]=lIlIlIIIlllllllII()-(2^16)lIIIlIllIIlIlIlllllIllIl[#("IW4O")]=lIIlIIlIIIlIIIIIIllIIII();end;if(IIllIllIIlIlIIIllllIlI(lIIllllllI,1,1)==1)then lIIIlIllIIlIlIlllllIllIl[#("5B")]=llIIIIIlIIlIIlIII[lIIIlIllIIlIlIlllllIllIl[#("gt")]]end if(IIllIllIIlIlIIIllllIlI(lIIllllllI,2,2)==1)then lIIIlIllIIlIlIlllllIllIl[#("y3x")]=llIIIIIlIIlIIlIII[lIIIlIllIIlIlIlllllIllIl[#("fjA")]]end if(IIllIllIIlIlIIIllllIlI(lIIllllllI,3,3)==1)then lIIIlIllIIlIlIlllllIllIl[#("GRsE")]=llIIIIIlIIlIIlIII[lIIIlIllIIlIlIlllllIllIl[#("p8MW")]]end IIlIIlIllIIIlllllII[lIlIIIIllIIIIlllIllllIll]=lIIIlIllIIlIlIlllllIllIl;end end;return IIIlIIllIlIlIIIIIIIIl;end;local function IlIIllIIII(lIIIlIllIIlIlIlllllIllIl,lIlIlIIIlllllllII,IIlIIlIllIIIlllllII)lIIIlIllIIlIlIlllllIllIl=(lIIIlIllIIlIlIlllllIllIl==true and lIlIIIIllIIIIlllIllllIll())or lIIIlIllIIlIlIlllllIllIl;return(function(...)local lIIlIIlIIIlIIIIIIllIIII=lIIIlIllIIlIlIlllllIllIl[1];local IlIIIllIIlIlllll=lIIIlIllIIlIlIlllllIllIl[3];local lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl[2];local lIlIIIIllIIIIlllIllllIll=lllIlIIll local IIllIllIIlIlIIIllllIlI=1;local llIIIIIlIIlIIlIII=-1;local lllIlIIll={};local IIlIllllIIl={...};local IIIlIIllIlIlIIIIIIIIl=lllIIlIllIIllIIIlIllIIIll('#',...)-1;local lIIIlIllIIlIlIlllllIllIl={};local lIlIlIIIlllllllII={};for lIIIlIllIIlIlIlllllIllIl=0,IIIlIIllIlIlIIIIIIIIl do if(lIIIlIllIIlIlIlllllIllIl>=IlIIIllIIlIlllll)then lllIlIIll[lIIIlIllIIlIlIlllllIllIl-IlIIIllIIlIlllll]=IIlIllllIIl[lIIIlIllIIlIlIlllllIllIl+1];else lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl]=IIlIllllIIl[lIIIlIllIIlIlIlllllIllIl+#{{661;750;673;79};}];end;end;local lIIIlIllIIlIlIlllllIllIl=IIIlIIllIlIlIIIIIIIIl-IlIIIllIIlIlllll+1 local lIIIlIllIIlIlIlllllIllIl;local IlIIIllIIlIlllll;while true do lIIIlIllIIlIlIlllllIllIl=lIIlIIlIIIlIIIIIIllIIII[IIllIllIIlIlIIIllllIlI];IlIIIllIIlIlllll=lIIIlIllIIlIlIlllllIllIl[#("4")];if IlIIIllIIlIlllll<=#("f4u0yVj")then if IlIIIllIIlIlllll<=#("buN")then if IlIIIllIIlIlllll<=#("b")then if IlIIIllIIlIlllll>#("")then local lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl[#("E5")]lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl]=lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl](lIIllllllI(lIlIlIIIlllllllII,lIIIlIllIIlIlIlllllIllIl+1,llIIIIIlIIlIIlIII))else lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#{{143;58;684;913};{752;922;27;828};}]]=lIIIlIllIIlIlIlllllIllIl[#("3A2")];end;elseif IlIIIllIIlIlllll>#("sd")then lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#{{317;50;659;748};"1 + 1 = 111";}]]=IIlIIlIllIIIlllllII[lIIIlIllIIlIlIlllllIllIl[#("qB1")]];else local IIllIllIIlIlIIIllllIlI=lIIIlIllIIlIlIlllllIllIl[#("PY")];local IlIIIllIIlIlllll=lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("IQT")]];lIlIlIIIlllllllII[IIllIllIIlIlIIIllllIlI+1]=IlIIIllIIlIlllll;lIlIlIIIlllllllII[IIllIllIIlIlIIIllllIlI]=IlIIIllIIlIlllll[lIIIlIllIIlIlIlllllIllIl[#("efDP")]];end;elseif IlIIIllIIlIlllll<=#("0CfxL")then if IlIIIllIIlIlllll>#("yVlj")then lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("Ao")]]=IIlIIlIllIIIlllllII[lIIIlIllIIlIlIlllllIllIl[#("Ekj")]];else local IIllIllIIlIlIIIllllIlI=lIIIlIllIIlIlIlllllIllIl[#("Sp")]local IlIIIllIIlIlllll,lIIIlIllIIlIlIlllllIllIl=lIlIIIIllIIIIlllIllllIll(lIlIlIIIlllllllII[IIllIllIIlIlIIIllllIlI](lIIllllllI(lIlIlIIIlllllllII,IIllIllIIlIlIIIllllIlI+1,lIIIlIllIIlIlIlllllIllIl[#{"1 + 1 = 111";{753;825;239;12};"1 + 1 = 111";}])))llIIIIIlIIlIIlIII=lIIIlIllIIlIlIlllllIllIl+IIllIllIIlIlIIIllllIlI-1 local lIIIlIllIIlIlIlllllIllIl=0;for IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI,llIIIIIlIIlIIlIII do lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl+1;lIlIlIIIlllllllII[IIllIllIIlIlIIIllllIlI]=IlIIIllIIlIlllll[lIIIlIllIIlIlIlllllIllIl];end;end;elseif IlIIIllIIlIlllll>#("kJZxM5")then lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("Xr")]]=(lIIIlIllIIlIlIlllllIllIl[#("9iG")]~=0);else local lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl[#("nz")]lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl]=lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl](lIIllllllI(lIlIlIIIlllllllII,lIIIlIllIIlIlIlllllIllIl+1,llIIIIIlIIlIIlIII))end;elseif IlIIIllIIlIlllll<=#("WkUGK1xviGs")then if IlIIIllIIlIlllll<=#("c8tRGDSTt")then if IlIIIllIIlIlllll>#("DMKax0WY")then lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("1L")]]=lIIIlIllIIlIlIlllllIllIl[#("5WY")];else local IIlIllllIIl;local lllIlIIll,lllIIlIllIIllIIIlIllIIIll;local IIIlIIllIlIlIIIIIIIIl;local IlIIIllIIlIlllll;lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("Df")]]=IIlIIlIllIIIlllllII[lIIIlIllIIlIlIlllllIllIl[#("Leu")]];IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI+1;lIIIlIllIIlIlIlllllIllIl=lIIlIIlIIIlIIIIIIllIIII[IIllIllIIlIlIIIllllIlI];lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("nz")]]=IIlIIlIllIIIlllllII[lIIIlIllIIlIlIlllllIllIl[#("5zb")]];IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI+1;lIIIlIllIIlIlIlllllIllIl=lIIlIIlIIIlIIIIIIllIIII[IIllIllIIlIlIIIllllIlI];IlIIIllIIlIlllll=lIIIlIllIIlIlIlllllIllIl[#("ec")];IIIlIIllIlIlIIIIIIIIl=lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("qDm")]];lIlIlIIIlllllllII[IlIIIllIIlIlllll+1]=IIIlIIllIlIlIIIIIIIIl;lIlIlIIIlllllllII[IlIIIllIIlIlllll]=IIIlIIllIlIlIIIIIIIIl[lIIIlIllIIlIlIlllllIllIl[#("rS3z")]];IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI+1;lIIIlIllIIlIlIlllllIllIl=lIIlIIlIIIlIIIIIIllIIII[IIllIllIIlIlIIIllllIlI];lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("Pg")]]=lIIIlIllIIlIlIlllllIllIl[#("Or0")];IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI+1;lIIIlIllIIlIlIlllllIllIl=lIIlIIlIIIlIIIIIIllIIII[IIllIllIIlIlIIIllllIlI];lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("uN")]]=(lIIIlIllIIlIlIlllllIllIl[#{{431;727;24;449};"1 + 1 = 111";{149;402;303;910};}]~=0);IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI+1;lIIIlIllIIlIlIlllllIllIl=lIIlIIlIIIlIIIIIIllIIII[IIllIllIIlIlIIIllllIlI];IlIIIllIIlIlllll=lIIIlIllIIlIlIlllllIllIl[#("7a")]lllIlIIll,lllIIlIllIIllIIIlIllIIIll=lIlIIIIllIIIIlllIllllIll(lIlIlIIIlllllllII[IlIIIllIIlIlllll](lIIllllllI(lIlIlIIIlllllllII,IlIIIllIIlIlllll+1,lIIIlIllIIlIlIlllllIllIl[#("Tu9")])))llIIIIIlIIlIIlIII=lllIIlIllIIllIIIlIllIIIll+IlIIIllIIlIlllll-1 IIlIllllIIl=0;for lIIIlIllIIlIlIlllllIllIl=IlIIIllIIlIlllll,llIIIIIlIIlIIlIII do IIlIllllIIl=IIlIllllIIl+1;lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl]=lllIlIIll[IIlIllllIIl];end;IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI+1;lIIIlIllIIlIlIlllllIllIl=lIIlIIlIIIlIIIIIIllIIII[IIllIllIIlIlIIIllllIlI];IlIIIllIIlIlllll=lIIIlIllIIlIlIlllllIllIl[#("ji")]lIlIlIIIlllllllII[IlIIIllIIlIlllll]=lIlIlIIIlllllllII[IlIIIllIIlIlllll](lIIllllllI(lIlIlIIIlllllllII,IlIIIllIIlIlllll+1,llIIIIIlIIlIIlIII))IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI+1;lIIIlIllIIlIlIlllllIllIl=lIIlIIlIIIlIIIIIIllIIII[IIllIllIIlIlIIIllllIlI];lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("fm")]]();IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI+1;lIIIlIllIIlIlIlllllIllIl=lIIlIIlIIIlIIIIIIllIIII[IIllIllIIlIlIIIllllIlI];do return end;end;elseif IlIIIllIIlIlllll==#("zTvH2Ft1na")then local IIllIllIIlIlIIIllllIlI=lIIIlIllIIlIlIlllllIllIl[#("0s")]local IlIIIllIIlIlllll,lIIIlIllIIlIlIlllllIllIl=lIlIIIIllIIIIlllIllllIll(lIlIlIIIlllllllII[IIllIllIIlIlIIIllllIlI](lIIllllllI(lIlIlIIIlllllllII,IIllIllIIlIlIIIllllIlI+1,lIIIlIllIIlIlIlllllIllIl[#("XpY")])))llIIIIIlIIlIIlIII=lIIIlIllIIlIlIlllllIllIl+IIllIllIIlIlIIIllllIlI-1 local lIIIlIllIIlIlIlllllIllIl=0;for IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI,llIIIIIlIIlIIlIII do lIIIlIllIIlIlIlllllIllIl=lIIIlIllIIlIlIlllllIllIl+1;lIlIlIIIlllllllII[IIllIllIIlIlIIIllllIlI]=IlIIIllIIlIlllll[lIIIlIllIIlIlIlllllIllIl];end;else do return end;end;elseif IlIIIllIIlIlllll<=#("o1DQgv12s44m9")then if IlIIIllIIlIlllll==#("Ri6JFGKtg4VQ")then local IlIIIllIIlIlllll=lIIIlIllIIlIlIlllllIllIl[#{"1 + 1 = 111";"1 + 1 = 111";}];local IIllIllIIlIlIIIllllIlI=lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("4yd")]];lIlIlIIIlllllllII[IlIIIllIIlIlllll+1]=IIllIllIIlIlIIIllllIlI;lIlIlIIIlllllllII[IlIIIllIIlIlllll]=IIllIllIIlIlIIIllllIlI[lIIIlIllIIlIlIlllllIllIl[#("Mr3v")]];else lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("on")]]=(lIIIlIllIIlIlIlllllIllIl[#("Mvy")]~=0);end;elseif IlIIIllIIlIlllll<=#("BllLESeTMj33a9")then lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("el")]]();elseif IlIIIllIIlIlllll>#("GFFHvTlxysTEQ4U")then do return end;else lIlIlIIIlllllllII[lIIIlIllIIlIlIlllllIllIl[#("8C")]]();end;IIllIllIIlIlIIIllllIlI=IIllIllIIlIlIIIllllIlI+1;end;end);end;return IlIIllIIII(true,{},IlIIllllll())();end)(string.byte,table.insert,setmetatable);
+    end)
+
+
+    ScripthubSection:NewButton("Moscahub", "Execute Mosca hub", function()
+        loadstring(game:HttpGet("https://moscagui.000webhostapp.com/Mosca-Hub/",true))()
+    end)
+
+
+    local Main = Window:NewTab("Credit")
+    local MainSection = Main:NewSection("Hiidk#2019")
+
+
+
+elseif game.PlaceId == 3956818381 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Ninja Legends(house hub)", "Synapse")
+
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+    MainSection:NewToggle("Auto Swing", "Make your player autoswing", function(v)
+        getgenv().autoswing = v
+        while true do
+            if not getgenv().autoswing then return end
+            for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if v:FindFirstChild("ninjitsuGain") then
+                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                    break
+                end
+            end
+            local A_1 = "swingKatana"
+            local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+            Event:FireServer(A_1)
+            wait(0.1)
+        end
+    end)
+
+
+
+    MainSection:NewToggle("Auto Sell", "Makes your player autosell", function(v)
+        getgenv().autosell = v
+        while true do
+            if getgenv().autoswing == false then return end
+            game:GetService("Workspace").sellAreaCircles["sellAreaCircle16"].circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            wait(0.1)
+            game:GetService("Workspace").sellAreaCircles["sellAreaCircle16"].circleInner.CFrame = CFrame.new(0,0,0)
+            wait(0.1)
+        end
+    end)
+
+    MainSection:NewButton("Unlock all islands", "Unlocks all islands", function()
+        local oldcframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        for _,v in pairs(game:GetService("Workspace").islandUnlockParts:GetChildren()) do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+            wait(0.1)
+        end
+        wait(0.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcframe
+    end)
+    
+    MainSection:NewToggle("Auto buy all swords", "Auto buys all swords", function(v)
+        getgenv().buyswords = v
+        while true do
+            if not getgenv().buyswords then return end
+            local A_1 = "buyAllSwords"
+            local A_2 = "Inner Peace Island"
+            local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+            Event:FireServer(A_1, A_2)
+            wait(0.5)
+        end
+    end)
+
+    MainSection:NewToggle("Auto buy all belts", "Auto buys all belts", function(v)
+        getgenv().buybelts = v
+        while true do
+            if not getgenv().buybelts then return end
+            local A_1 = "buyAllBelts"
+            local A_2 = "Inner Peace Island"
+            local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+            Event:FireServer(A_1, A_2)
+            wait(0.5)
+        end
+    end)
+
+    local Main = Window:NewTab("Credit")
+    local MainSection = Main:NewSection("Hiidk#2019")
+
+elseif game.PlaceId == 6229116934 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Hoopz(househub)", "Synapse")
+    
+    local Main = Window:NewTab("Aimbot")
+    local MainSection = Main:NewSection("Aimstudio aimlock")
+    MainSection:NewButton("Aimbot", "Give you aimbot", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Loompic/Hoopz-Aimlock/main/Aimlock"))()
+    end)
+    local Main = Window:NewTab("Credit")
+    local MainSection = Main:NewSection("Hiidk#2019 and the owner of the aimbot")
+elseif game.PlaceId == 6872265039 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Bedwars(house hub)", "Synapse")
+    local Main = Window:NewTab("Script hub")
+    local MainSection = Main:NewSection("Scripthub")
+    MainSection:NewButton("Vapev4", "Give vapev4 script", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
+    end)
+    local Main = Window:NewTab("Credit")
+    local MainSection = Main:NewSection("Hiidk#2019 and the owner of vapev4")
+elseif game.PlaceId == 2788229376 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Da hood(house hub)", "Synapse")
+
+    local Main = Window:NewTab("Script hub for da hood")
+    local MainSection = Main:NewSection("Scripthub")
+
+    MainSection:NewButton("Swagmode", "Execute swag mode", function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SwagModeV002'))() 
+    end)
+    MainSection:NewButton("Raycodex", "Execute raycodex", function()
+        loadstring(game:GetObjects("rbxassetid://5812737894")[1].Source)()
+    end)
+    MainSection:NewButton("Faded", "Execute Faded", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
+    end)
+    MainSection:NewButton("Aimbot", "Aimbot script", function()
+        --[[
+15X SOURCE LEAKED                                                                                                                                                                      
+--]]
+
+
+local L_1_ = "t"
+local L_2_ = game.Players.LocalPlayer:GetMouse()
+L_2_.KeyDown:Connect(
+    function(L_22_arg0)
+	if L_22_arg0 == L_1_ then
+		if DaHoodSettings.SilentAim == true then
+			DaHoodSettings.SilentAim = false
+		else
+			DaHoodSettings.SilentAim = true
+		end
+	end
+end
+)
+game:GetService("RunService").RenderStepped:Connect(
+    function()
+	for L_23_forvar0, L_24_forvar1 in pairs(game.CoreGui:GetChildren()) do
+		if L_24_forvar1.Name == "PostmansAutoRob" then
+			L_24_forvar1:Destroy()
+		end
+	end
+	for L_25_forvar0, L_26_forvar1 in pairs(game.CoreGui:GetChildren()) do
+		if L_26_forvar1.Name == "WarningGUI" then
+			L_26_forvar1:Destroy()
+		end
+	end
+end
+)
+game.StarterGui:SetCore(
+    "SendNotification",
+    {
+	Title = "15X ",
+	Text = "INSOMNIAC, You're whitelisted.",
+}
+)
+local L_3_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local L_4_ = L_3_.CreateLib("15x", "BloodTheme")
+local L_5_ = L_4_:NewTab("Aimlock")
+local L_6_ = L_5_:NewSection("15x")
+L_6_:NewButton(
+    "Aimlock",
+    "Beam niggas down",
+    function()
+	getgenv().AimPart = "HumanoidRootPart"
+	getgenv().AimlockKey = "q"
+	getgenv().AimRadius = 30
+	getgenv().ThirdPerson = true
+	getgenv().FirstPerson = true
+	getgenv().TeamCheck = false
+	getgenv().PredictMovement = true
+	getgenv().PredictionVelocity = 9
+	local L_27_, L_28_, L_29_, L_30_ =
+            game:GetService "Players",
+            game:GetService "UserInputService",
+            game:GetService "RunService",
+            game:GetService "StarterGui"
+	local L_31_, L_32_, L_33_, L_34_, L_35_, L_36_, L_37_ =
+            L_27_.LocalPlayer,
+            L_27_.LocalPlayer:GetMouse(),
+            workspace.CurrentCamera,
+            CFrame.new,
+            Ray.new,
+            Vector3.new,
+            Vector2.new
+	local L_38_, L_39_, L_40_ = true, false, false
+	local L_41_
+	getgenv().CiazwareUniversalAimbotLoaded = true
+	getgenv().WorldToViewportPoint = function(L_42_arg0)
+		return L_33_:WorldToViewportPoint(L_42_arg0)
+	end
+	getgenv().WorldToScreenPoint = function(L_43_arg0)
+		return L_33_.WorldToScreenPoint(L_33_, L_43_arg0)
+	end
+	getgenv().GetObscuringObjects = function(L_44_arg0)
+		if L_44_arg0 and L_44_arg0:FindFirstChild(getgenv().AimPart) and L_31_ and L_31_.Character:FindFirstChild("Head") then
+			local L_45_ = workspace:FindPartOnRay(L_35_(L_44_arg0[getgenv().AimPart].Position, L_31_.Character.Head.Position))
+			if L_45_ then
+				return L_45_:IsDescendantOf(L_44_arg0)
+			end
+		end
+	end
+	getgenv().GetNearestTarget = function()
+		local L_46_ = {}
+		local L_47_ = {}
+		local L_48_ = {}
+		for L_50_forvar0, L_51_forvar1 in pairs(L_27_:GetPlayers()) do
+			if L_51_forvar1 ~= L_31_ then
+				table.insert(L_46_, L_51_forvar1)
+			end
+		end
+		for L_52_forvar0, L_53_forvar1 in pairs(L_46_) do
+			if L_53_forvar1.Character ~= nil then
+				local L_54_ = L_53_forvar1.Character:FindFirstChild("Head")
+				if getgenv().TeamCheck == true and L_53_forvar1.Team ~= L_31_.Team then
+					local L_55_ =
+                            (L_53_forvar1.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
+					local L_56_ =
+                            Ray.new(
+                            game.Workspace.CurrentCamera.CFrame.p,
+                            (L_32_.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * L_55_
+                        )
+					local L_57_, L_58_ = game.Workspace:FindPartOnRay(L_56_, game.Workspace)
+					local L_59_ = math.floor((L_58_ - L_54_.Position).magnitude)
+					L_47_[L_53_forvar1.Name .. L_52_forvar0] = {}
+					L_47_[L_53_forvar1.Name .. L_52_forvar0].dist = L_55_
+					L_47_[L_53_forvar1.Name .. L_52_forvar0].plr = L_53_forvar1
+					L_47_[L_53_forvar1.Name .. L_52_forvar0].diff = L_59_
+					table.insert(L_48_, L_59_)
+				elseif getgenv().TeamCheck == false and L_53_forvar1.Team == L_31_.Team then
+					local L_60_ =
+                            (L_53_forvar1.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
+					local L_61_ =
+                            Ray.new(
+                            game.Workspace.CurrentCamera.CFrame.p,
+                            (L_32_.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * L_60_
+                        )
+					local L_62_, L_63_ = game.Workspace:FindPartOnRay(L_61_, game.Workspace)
+					local L_64_ = math.floor((L_63_ - L_54_.Position).magnitude)
+					L_47_[L_53_forvar1.Name .. L_52_forvar0] = {}
+					L_47_[L_53_forvar1.Name .. L_52_forvar0].dist = L_60_
+					L_47_[L_53_forvar1.Name .. L_52_forvar0].plr = L_53_forvar1
+					L_47_[L_53_forvar1.Name .. L_52_forvar0].diff = L_64_
+					table.insert(L_48_, L_64_)
+				end
+			end
+		end
+		if unpack(L_48_) == nil then
+			return nil
+		end
+		local L_49_ = math.floor(math.min(unpack(L_48_)))
+		if L_49_ > getgenv().AimRadius then
+			return nil
+		end
+		for L_65_forvar0, L_66_forvar1 in pairs(L_47_) do
+			if L_66_forvar1.diff == L_49_ then
+				return L_66_forvar1.plr
+			end
+		end
+		return nil
+	end
+	L_32_.KeyDown:Connect(
+            function(L_67_arg0)
+		if L_67_arg0 == AimlockKey and L_41_ == nil then
+			pcall(
+                        function()
+				if L_39_ ~= true then
+					L_39_ = true
+				end
+				local L_68_
+				L_68_ = GetNearestTarget()
+				if L_68_ ~= nil then
+					L_41_ = L_68_
+				end
+			end
+                    )
+		elseif L_67_arg0 == AimlockKey and L_41_ ~= nil then
+			if L_41_ ~= nil then
+				L_41_ = nil
+			end
+			if L_39_ ~= false then
+				L_39_ = false
+			end
+		end
+	end
+        )
+	L_29_.RenderStepped:Connect(
+            function()
+		if getgenv().ThirdPerson == true and getgenv().FirstPerson == true then
+			if
+                        (L_33_.Focus.p - L_33_.CoordinateFrame.p).Magnitude > 1 or
+                            (L_33_.Focus.p - L_33_.CoordinateFrame.p).Magnitude <= 1
+                     then
+				L_40_ = true
+			else
+				L_40_ = false
+			end
+		elseif getgenv().ThirdPerson == true and getgenv().FirstPerson == false then
+			if (L_33_.Focus.p - L_33_.CoordinateFrame.p).Magnitude > 1 then
+				L_40_ = true
+			else
+				L_40_ = false
+			end
+		elseif getgenv().ThirdPerson == false and getgenv().FirstPerson == true then
+			if (L_33_.Focus.p - L_33_.CoordinateFrame.p).Magnitude <= 1 then
+				L_40_ = true
+			else
+				L_40_ = false
+			end
+		end
+		if L_38_ == true and L_39_ == true then
+			if L_41_ and L_41_.Character and L_41_.Character:FindFirstChild(getgenv().AimPart) then
+				if getgenv().FirstPerson == true then
+					if L_40_ == true then
+						if getgenv().PredictMovement == true then
+							L_33_.CFrame =
+                                        L_34_(
+                                        L_33_.CFrame.p,
+                                        L_41_.Character[getgenv().AimPart].Position +
+                                            L_41_.Character[getgenv().AimPart].Velocity / PredictionVelocity
+                                    )
+						elseif getgenv().PredictMovement == false then
+							L_33_.CFrame = L_34_(L_33_.CFrame.p, L_41_.Character[getgenv().AimPart].Position)
+						end
+					end
+				elseif getgenv().ThirdPerson == true then
+					if L_40_ == true then
+						if getgenv().PredictMovement == true then
+							L_33_.CFrame =
+                                        L_34_(
+                                        L_33_.CFrame.p,
+                                        L_41_.Character[getgenv().AimPart].Position +
+                                            L_41_.Character[getgenv().AimPart].Velocity / PredictionVelocity
+                                    )
+						elseif getgenv().PredictMovement == false then
+							L_33_.CFrame = L_34_(L_33_.CFrame.p, L_41_.Character[getgenv().AimPart].Position)
+						end
+					end
+				end
+			end
+		end
+	end
+        )
+end
+)
+L_6_:NewTextBox(
+    "Aimlock Key",
+    "Aimlock Key should be lowercase.",
+    function(L_69_arg0)
+	getgenv().AimlockKey = L_69_arg0
+end
+)
+L_6_:NewTextBox(
+    "Aimlock Prediction",
+    "Customize your aimlock prediction",
+    function(L_70_arg0)
+	PredictionVelocity = L_70_arg0
+end
+)
+L_6_:NewDropdown(
+    "AimPart",
+    "Yes",
+    {
+	"Head",
+	"UpperTorso",
+	"HumanoidRootPart",
+	"LowerTorso"
+},
+    function(L_71_arg0)
+	getgenv().AimPart = L_71_arg0
+end
+)
+local L_7_ = L_4_:NewTab("Silent Aim")
+local L_8_ = L_7_:NewSection("15x")
+L_8_:NewButton(
+    "Silent Aim",
+    "Silent Aim Toggle Key is T.",
+    function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/tayodevelup/imsoniac/main/silentaim", true))()
+end
+)
+L_8_:NewTextBox(
+    "Silent Aim Prediction",
+    "0.157 for low ping 0.178 high ping",
+    function(L_72_arg0)
+	DaHoodSettings.Prediction = L_72_arg0
+end
+)
+L_8_:NewDropdown(
+    "Silent Aim Part",
+    "yes bro flash is cool",
+    {
+	"Head",
+	"UpperTorso",
+	"HumanoidRootPart",
+	"LowerTorso"
+},
+    function(L_73_arg0)
+	Aiming.TargetPart = L_73_arg0
+end
+)
+L_8_:NewTextBox(
+    "Silent Aim Fov",
+    "yes bro i am cool (flash)",
+    function(L_74_arg0)
+	Aiming.FOV = L_74_arg0
+end
+)
+L_8_:NewToggle(
+    "Silent Aim Show Fov",
+    "yea",
+    function(L_75_arg0)
+	Aiming.ShowFOV = L_75_arg0
+end
+)
+local L_11_ = L_4_:NewTab("Antilock")
+local L_12_ = L_11_:NewSection("15x")
+L_12_:NewButton(
+    "Anti-Lock",
+    "Key is Z.",
+    function()
+	repeat
+		wait()
+	until game:IsLoaded()
+	getgenv().Fix = true
+	getgenv().TeclasWS = {
+		["tecla1"] = "nil",
+		["tecla2"] = "nil",
+		["tecla3"] = "H"
+	}
+	local L_121_ = game:GetService("Players")
+	local L_122_ = game:GetService("StarterGui") or "son una mierda"
+	local L_123_ = L_121_.LocalPlayer
+	local L_124_ = L_123_:GetMouse()
+	local L_125_ = getrenv()._G
+	local L_126_ = getrawmetatable(game)
+	local L_127_ = L_126_.__newindex
+	local L_128_ = L_126_.__index
+	local L_129_ = 22
+	local L_130_ = true
+	function anunciar_atentado_terrorista(L_138_arg0)
+		L_122_:SetCore("SendNotification", {
+			Title = "anti lock fix",
+			Text = L_138_arg0
+		})
+	end
+	getgenv().TECHWAREWALKSPEED_LOADED = true
+	wait(1.5)
+	anunciar_atentado_terrorista("Press  " .. TeclasWS.tecla3 .. " to turn on/off anti lock fix")
+	L_124_.KeyDown:Connect(
+            function(L_139_arg0)
+		if L_139_arg0:lower() == TeclasWS.tecla1:lower() then
+			L_129_ = L_129_ + 1
+			anunciar_atentado_terrorista("播放器速度已提高 (speed = " .. tostring(L_129_) .. ")")
+		elseif L_139_arg0:lower() == TeclasWS.tecla2:lower() then
+			L_129_ = L_129_ - 1
+			anunciar_atentado_terrorista("玩家的速度已降低 (speed = " .. tostring(L_129_) .. ")")
+		elseif L_139_arg0:lower() == TeclasWS.tecla3:lower() then
+			if L_130_ then
+				L_130_ = false
+				anunciar_atentado_terrorista("anti lock fix off")
+			else
+				L_130_ = true
+				anunciar_atentado_terrorista("anti lock fix on")
+			end
+		end
+	end
+        )
+	setreadonly(L_126_, false)
+	L_126_.__index =
+            newcclosure(
+            function(L_140_arg0, L_141_arg1)
+		local L_142_ = checkcaller()
+		if L_141_arg1 == "WalkSpeed" and not L_142_ then
+			return L_125_.CurrentWS
+		end
+		return L_128_(L_140_arg0, L_141_arg1)
+	end
+        )
+	L_126_.__newindex =
+            newcclosure(
+            function(L_143_arg0, L_144_arg1, L_145_arg2)
+		local L_146_ = checkcaller()
+		if L_130_ then
+			if L_144_arg1 == "WalkSpeed" and L_145_arg2 ~= 0 and not L_146_ then
+				return L_127_(L_143_arg0, L_144_arg1, L_129_)
+			end
+		end
+		return L_127_(L_143_arg0, L_144_arg1, L_145_arg2)
+	end
+        )
+	setreadonly(L_126_, true)
+	repeat
+		wait()
+	until game:IsLoaded()
+	local L_131_ = game:service("Players")
+	local L_132_ = L_131_.LocalPlayer
+	repeat
+		wait()
+	until L_132_.Character
+	local L_133_ = game:service("UserInputService")
+	local L_134_ = game:service("RunService")
+	local L_135_ = -0.27
+	local L_136_ = false
+	local L_137_
+	L_133_.InputBegan:connect(
+            function(L_147_arg0)
+		if L_147_arg0.KeyCode == Enum.KeyCode.LeftBracket then
+			L_135_ = L_135_ + 0.01
+			print(L_135_)
+			wait(0.2)
+			while L_133_:IsKeyDown(Enum.KeyCode.LeftBracket) do
+				wait()
+				L_135_ = L_135_ + 0.01
+				print(L_135_)
+			end
+		end
+		if L_147_arg0.KeyCode == Enum.KeyCode.RightBracket then
+			L_135_ = L_135_ - 0.01
+			print(L_135_)
+			wait(0.2)
+			while L_133_:IsKeyDown(Enum.KeyCode.RightBracket) do
+				wait()
+				L_135_ = L_135_ - 0.01
+				print(L_135_)
+			end
+		end
+		if L_147_arg0.KeyCode == Enum.KeyCode.Z then
+			L_136_ = not L_136_
+			if L_136_ == true then
+				repeat
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame +
+                                game.Players.LocalPlayer.Character.Humanoid.MoveDirection * L_135_
+					game:GetService("RunService").Stepped:wait()
+				until L_136_ == false
+			end
+		end
+	end
+        )
+end
+)
+local L_13_ = L_4_:NewTab("Settings")
+local L_14_ = L_13_:NewSection("15X")
+L_14_:NewKeybind(
+    "Keybind Gui Toggle",
+    "h",
+    Enum.KeyCode.V,
+    function()
+	L_3_:ToggleUI()
+end
+)
+local L_17_ = L_4_:NewTab("ESP")
+local L_18_ = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
+local L_19_ = L_17_:NewSection("15X")
+L_19_:NewToggle(
+    "ESP",
+    "ESP",
+    function(L_201_arg0)
+	L_18_:Toggle(L_201_arg0)
+end
+)
+L_19_:NewToggle(
+    "Tracers",
+    "ESP Tracers",
+    function(L_202_arg0)
+	L_18_.Tracers = L_202_arg0
+end
+)
+L_19_:NewToggle(
+    "Names",
+    "ESP Names",
+    function(L_203_arg0)
+	L_18_.Names = L_203_arg0
+end
+)
+L_19_:NewToggle(
+    "Boxes",
+    "ESP Boxes",
+    function(L_204_arg0)
+	L_18_.Boxes = L_204_arg0
+end
+)
+ end)
+
+ local Main = Window:NewTab("Credit")
+    local MainSection = Main:NewSection("hiidk#2019 and the dev of script hub")
+
+elseif game.PlaceId == 402122991 then 
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Redwood prison(househub)", "Synapse")
+
+    local Main = Window:NewTab("Player")
+    local MainSection = Main:NewSection("Stuff")
+
+    MainSection:NewButton("Redwood prison gui", "If you unlock the gui,this gui will be gone.", function()
+        loadstring(game:GetObjects('rbxassetid://5671578245')[1].Source)()
+    end)
+
+    MainSection:NewSlider("Walkspeed", "Changes the walkspeed", 250, 16, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end)
+
+    MainSection:NewSlider("Jumppower", "Changes the jumppower", 250, 50, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+    end)
+
+    local Main = Window:NewTab("Credit")
+    local MainSection = Main:NewSection("hiidk#2019 and the dev of script hub")
+else
+    print("not support game")
+
+end --- real end
